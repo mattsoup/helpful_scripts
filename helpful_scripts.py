@@ -2,11 +2,14 @@
 
 
 def parse_fasta(fasta_file):
+
+	print("Parsing {}".format(fasta_file))
 	fasta_dict = {}
 	fasta = open(fasta_file, "r")
 	for line in fasta:
 		if line.startswith(">"):
 			header = line.strip().split(" ")[0][1:]
+			print(header)
 			fasta_dict[header] = []
 		else:
 			fasta_dict[header].append(line.strip())
@@ -18,7 +21,8 @@ def parse_fasta(fasta_file):
 	return fasta_dict
 
 def write_fasta(file_handle, fasta_dict):
+	print("Writing {}".format(file_handle))
 	file = open(file_handle, "w")
 	for chrom in fasta_dict:
-		file.write(">{}\n{}\n".format(chrom, "".join(fasta_dict[chrom]))
+		file.write(">{}\n{}\n".format(chrom, "".join(fasta_dict[chrom])))
 	file.close()
