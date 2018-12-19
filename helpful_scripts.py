@@ -17,3 +17,8 @@ def parse_fasta(fasta_file):
 
 	return fasta_dict
 
+def write_fasta(file_handle, fasta_dict):
+	file = open(file_handle, "w")
+	for chrom in fasta_dict:
+		file.write(">{}\n{}\n".format(chrom, "".join(fasta_dict[chrom]))
+	file.close()
